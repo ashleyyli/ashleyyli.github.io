@@ -7,62 +7,17 @@ import {
   ScrollRestoration,
 } from "react-router";
 
-import type { Route } from "./+types/root";
 import { useEffect, useState } from 'react'
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 
-import "./app.css";
+import "../app.css";
 
-export const links: Route.LinksFunction = () => [
-  { rel: "preconnect", href: "https://fonts.googleapis.com" },
-  {
-    rel: "preconnect",
-    href: "https://fonts.gstatic.com",
-    crossOrigin: "anonymous",
-  },
-  {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
-  },
-];
+type LayoutProps = { children: React.ReactNode };
 
-export function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout({ children }: LayoutProps) {
   return (
-    <html lang="en">
-      <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function () {
-                const theme = localStorage.getItem("theme");
-                const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-                if (theme === "dark" || (!theme && systemDark)) {
-                  document.documentElement.classList.add("dark");
-                } else {
-                  document.documentElement.classList.remove("dark");
-                }
-              })();
-            `,
-          }}
-        />
-        <Meta />
-        <Links />
-      </head>
-      <body>
-        {children}
-        <ScrollRestoration />
-        <Scripts />
-      </body>
-    </html>
-  );
-}
-
-export default function App() {
-  return (
-    <body className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col">
       <header className="p-6 bg-amber-100/11 dark:bg-slate-950/20">
         <nav className="flex flex-col md:flex-row items-center justify-between">
           <a className="text-3xl" href="ashleyyli.github.io" title="Ashley Li">
@@ -75,7 +30,7 @@ export default function App() {
 
             <span>/</span>
 
-            <a className="hover:underline" href="/projects" title="Projects">
+            <a className="hover:underline" href="/#/projects" title="Projects">
               Projects
             </a>
             
@@ -93,9 +48,9 @@ export default function App() {
 
       {/* <hr /> */}
 
-      <main className="flex flex-grow items-center justify-center p-6">
+      <main className="flex flex-grow flex-col items-center justify-center p-6">
         <div className="max-w-[700px] w-full">
-          <Outlet />
+          {children}
         </div>
       </main>
 
@@ -131,37 +86,8 @@ export default function App() {
           </div>
         </div>
       </footer>
-    </body>
+    </div>
     );
-}
-
-export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  let message = "Oops!";
-  let details = "An unexpected error occurred.";
-  let stack: string | undefined;
-
-  if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? "404" : "Error";
-    details =
-      error.status === 404
-        ? "The requested page could not be found."
-        : error.statusText || details;
-  } else if (import.meta.env.DEV && error && error instanceof Error) {
-    details = error.message;
-    stack = error.stack;
-  }
-
-  return (
-    <main className="pt-16 p-4 container mx-auto">
-      <h1>{message}</h1>
-      <p>{details}</p>
-      {stack && (
-        <pre className="w-full p-4 overflow-x-auto">
-          <code>{stack}</code>
-        </pre>
-      )}
-    </main>
-  );
 }
 
 function DisplayToggle() {

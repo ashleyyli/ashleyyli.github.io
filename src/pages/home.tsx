@@ -1,7 +1,7 @@
-import type { Route } from "./+types/home";
+import type { LoaderFunctionArgs } from "react-router-dom";
 import { About } from "./about";
 
-export function meta({}: Route.MetaArgs) {
+export function meta({}: LoaderFunctionArgs) {
   return [
     { title: "Ashley Li" },
     { name: "description", content: "A personal website" },
