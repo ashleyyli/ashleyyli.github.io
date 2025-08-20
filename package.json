@@ -1,9 +1,12 @@
 {
   "name": "my-react-router-app",
   "private": true,
+  "homepage": "https://ashleyli.github.io/",
   "type": "module",
   "scripts": {
     "build": "react-router build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc"
@@ -24,6 +27,7 @@
     "@types/node": "^20",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
+    "gh-pages": "^6.3.0",
     "tailwindcss": "^4.1.4",
     "typescript": "^5.8.3",
     "vite": "^6.3.3",
