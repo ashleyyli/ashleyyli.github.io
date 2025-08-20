@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function Projects() {
-	const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedProject, setSelectedProject] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = (project: any) => {
@@ -28,10 +28,10 @@ export default function Projects() {
 			/>
 			<div className="space-y-4">
 				<h1 className="text-4xl font-bold">Projects</h1>
-				<h3 className="text-xl text-gray-500"> it is questionable as to whether i put anything here</h3>
-				<p className="pb-2">
+				<h3 className="text-xl text-gray-500 pb-8">I'm not sure how consistently I'll update this</h3>
+				{/* <p className="pb-2">
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-				</p>
+				</p> */}
 				<div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-items-center">
 					{projectData.map((proj, idx) => (
 						<Project key={idx} {...proj} onClick={() => openModal(proj)} />
@@ -51,10 +51,10 @@ function Project({ date, title, subtitle, onClick}: {
 }) {	return (
 		<div 
 			onClick={onClick}
-			className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-sm flex flex-col gap-x-4 rounded-xl bg-white/20 p-6 shadow-lg outline outline-black/5 dark:bg-slate-800 dark:shadow-none dark:-outline-offset-1 dark:outline-white/10">
+			className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-sm flex flex-col gap-x-4 rounded-xl bg-white/20 p-6 shadow-lg outline outline-black/5 dark:bg-slate-800 dark:shadow-none dark:-outline-offset-1 dark:outline-white/10 cursor-pointer">
 			<h6 className="text-sm text-gray-500 dark:text-gray-300">{date}</h6>
-			<h2 className="text-3xl font-bold">{title}</h2>
-			<h4 className="text-gray-600">{subtitle}</h4>
+			<h2 className="text-3xl font-bold pb-2">{title}</h2>
+			<h4 className="text-gray-400">{subtitle}</h4>
 		</div>
 	);
 };
@@ -96,31 +96,29 @@ function Modal({
 
 function PersonalWebsiteProjectContent() {
 	return (
-		<div className="space-y-4">
-      <h1 className="text-2xl font-bold">header!</h1>
-      <h4 className="text-lg text-gray-500">
-        {/* <Typewriter options={{
-          strings: ['test1', 'yup', 'Hello, world!', 'another greeting would be too much', 'updog'],
-          autoStart: true,
-          loop: true
-        }} /> */}
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    <div className="space-y-4">
+      <h4 className="text-lg text-gray-400">
+        i wanted a quick way to practice my frontend skills, and i kind of wanted a personal website, so i made this.
       </h4>
       <main className="space-y-4">
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          my general goals were to make this website lightweight, simple, and easy to navigate.  simultaneously, i wanted it to 
+          host some degree of information without walls of text everywhere: thus pages and modals.  since i wanted to host this 
+          on GitHub Pages, this website is static.  while the content is just written into the project file--making the code a 
+          bit messy--i figured the amount of data was small enough and that it was convenient enough that the consequences were 
+          not too significant.
         </p>
-        <p> bullet points: </p>
-        <ul className="list-disc pl-6 space-y-2">
-          <li>bullet point 1</li>
-          <li>bullet point 2</li>
-          <li>bullet point 3</li>
-          <li>bullet point 4</li>
-        </ul>
-				<p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        <p> some points: </p>
+          <ul className="list-disc pl-6 space-y-2">
+            <li>built this from scratch (with a React Router starter template)</li>
+            <li>written with React.js and Tailwind CSS</li>
+            <li>remembered how hard of a time i have writing about myself</li>
+            <li>bullet point 4</li>
+          </ul>
+        <p>
+          there is more to do with clearning up the code and maybe adding a resume page, but it is hopefully ok for now.
         </p>
       </main>
-  </div>
+    </div>
 	);
 }

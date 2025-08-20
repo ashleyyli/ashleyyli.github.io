@@ -79,11 +79,11 @@ export default function App() {
               Projects
             </a>
             
-            <span>/</span>
+            {/* <span>/</span>
             
             <a className="hover:underline" href="/resume" title="Resume">
               Resume
-            </a>
+            </a> */}
 
             <DisplayToggle />
           </div>
