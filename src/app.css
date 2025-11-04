@@ -11,7 +11,6 @@ html,
 body {
   @apply bg-amber-50/10 dark:bg-slate-900;
   @apply text-black dark:text-white;
-  /* @apply text-xl; */
 }
 
 hr {

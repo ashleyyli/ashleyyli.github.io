@@ -1,5 +1,6 @@
 import type { LoaderFunctionArgs } from "react-router-dom";
 import { About } from "./about";
+import Projects from "../components/Projects";
 
 export function meta({}: LoaderFunctionArgs) {
   return [
@@ -9,5 +10,10 @@ export function meta({}: LoaderFunctionArgs) {
 }
 
 export default function Home() {
-  return <About />;
+  return (
+    <div>
+      <About />
+      <Projects />
+    </div>
+  );
 }

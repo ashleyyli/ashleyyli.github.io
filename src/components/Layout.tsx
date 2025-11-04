@@ -1,12 +1,3 @@
-import {
-  isRouteErrorResponse,
-  Links,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-} from "react-router";
-
 import { useEffect, useState } from 'react'
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
@@ -18,33 +9,7 @@ type LayoutProps = { children: React.ReactNode };
 export default function Layout({ children }: LayoutProps) {
   return (
     <div className="min-h-screen flex flex-col">
-      <header className="p-6 bg-amber-100/11 dark:bg-slate-950/20">
-        <nav className="flex flex-col md:flex-row items-center justify-between">
-          <a className="text-3xl" href="ashleyyli.github.io" title="Ashley Li">
-            Ashley Li
-          </a>
-          <div className="flex items-center space-x-4">    
-            <a className="hover:underline" href="/" title="About">
-              About
-            </a>
-
-            <span>/</span>
-
-            <a className="hover:underline" href="/#/projects" title="Projects">
-              Projects
-            </a>
-            
-            {/* <span>/</span>
-            
-            <a className="hover:underline" href="/resume" title="Resume">
-              Resume
-            </a> */}
-
-            <DisplayToggle />
-          </div>
-        </nav>
-        
-      </header>
+      <Header />
 
       {/* <hr /> */}
 
@@ -56,38 +21,58 @@ export default function Layout({ children }: LayoutProps) {
 
       {/* <hr /> */}
 
-      <footer className="h-32 p-4 flex flex-col justify-center">
-        <h6 className="text-xl pb-2">Contact {'\u{1F440}'}</h6>
-        <div className="flex justify-between space-x-6">
-          <div className="flex items-center space-x-2">
-            <a className="hover:underline" href="mailto:ashley.yashi.li@gmail.com">ashley.yashi.li@gmail.com</a>
-            <div className="span">/</div>
-            <a className="hover:underline" href="mailto:ashleyl7@illinois.edu">ashleyl7@illinois.edu </a>
-          </div>
-          <div className="flex space-x-4">
-            <a
-              href="https://github.com/ashleyyli"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-gray-400 transition-colors"
-              title="GitHub"
-            >
-              <FaGithub className="w-6 h-6" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/ashleyyli/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-gray-400 transition-colors"
-              title="Linkedin"
-            >
-              <FaLinkedin className="w-6 h-6" />
-            </a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
     );
+}
+
+function Header() {
+  return (
+    <header className="p-6 bg-amber-100/15 dark:bg-slate-950/20">
+      <nav className="flex flex-row justify-between w-full">
+        <a className="text-3xl" href="ashleyyli.github.io" title="Ashley Li">
+          Ashley Li
+        </a>
+        <DisplayToggle />
+      </nav>
+      
+    </header>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="h-32 p-4 flex flex-col justify-center">
+      <h6 className="text-xl pb-2">Contact {'\u{1F440}'}</h6>
+      <div className="flex justify-between space-x-6">
+        <div className="flex items-center space-x-2">
+          <a className="hover:underline" href="mailto:ashley.yashi.li@gmail.com">ashley.yashi.li@gmail.com</a>
+          <div className="span">/</div>
+          <a className="hover:underline" href="mailto:ashleyl7@illinois.edu">ashleyl7@illinois.edu </a>
+        </div>
+        <div className="flex space-x-4">
+          <a
+            href="https://github.com/ashleyyli"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-gray-400 transition-colors"
+            title="GitHub"
+          >
+            <FaGithub className="w-6 h-6" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/ashleyyli/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-gray-400 transition-colors"
+            title="Linkedin"
+          >
+            <FaLinkedin className="w-6 h-6" />
+          </a>
+        </div>
+      </div>
+    </footer>
+  );
 }
 
 function DisplayToggle() {
@@ -163,7 +148,6 @@ function DisplayToggle() {
               a9.753 9.753 0 0 0 9.002-5.998
               Z" />
         </svg>
-
       )}
     </button>
   );

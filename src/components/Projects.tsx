@@ -20,7 +20,7 @@ export default function Projects() {
   ];
 
 	return (
-		<div>
+		<div className="min-h-[50vh]">
 			<Modal
 				open={isModalOpen}
 				project={selectedProject}
@@ -28,10 +28,7 @@ export default function Projects() {
 			/>
 			<div className="space-y-4">
 				<h1 className="text-4xl font-bold">Projects</h1>
-				<h3 className="text-xl text-gray-500 pb-8">I'm not sure how consistently I'll update this</h3>
-				{/* <p className="pb-2">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-				</p> */}
+				<h3 className="text-xl text-gray-500 pb-2">I'm not sure how consistently I'll update this</h3>
 				<div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-items-center">
 					{projectData.map((proj, idx) => (
 						<Project key={idx} {...proj} onClick={() => openModal(proj)} />
@@ -74,7 +71,7 @@ function Modal({
 
   return (
     <div onClick={onClose} className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-      <div onClick={(e) => e.stopPropagation()} className="bg-amber-50 dark:bg-slate-900 p-16 rounded-lg max-w-4xl w-full relative shadow-xl">
+      <div onClick={(e) => e.stopPropagation()} className="bg-amber-50 dark:bg-slate-900 p-16 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto relative shadow-xl">
 				<header className="flex justify-between pb-4">
 					<div className="flex flex-col items-baseline md:flex-row space-x-4">
 						<h1 className="text-3xl font-bold">{title}</h1>

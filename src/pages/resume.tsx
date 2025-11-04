@@ -1,8 +1,8 @@
 export default function Resume() {
 	return ( 
     <div>
-      <p>well what can i say</p>
-      <p>bonjour</p>
+      <p>how did you get here</p>
+      <p>email me if interested</p>
     </div>
   );
 }
