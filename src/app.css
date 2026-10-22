@@ -7,9 +7,11 @@
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-/* Opaque so iOS fills the status bar, home indicator and overscroll with it */
+/* Opaque so iOS fills the strips behind the Dynamic Island and URL bar with
+   it. Safari paints those strips one flat color, so the decorative layers
+   below fade out at the screen edges to meet it without a visible seam. */
 html {
-  @apply bg-amber-50 dark:bg-slate-900;
+  @apply bg-white dark:bg-slate-900;
 }
 
 body {
@@ -18,15 +20,26 @@ body {
   @apply text-base;
 }
 
+@utility fade-edges {
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 48px,
+    black calc(100% - 48px),
+    transparent
+  );
+}
+
 /* iOS ignores background-attachment: fixed, so the gradient lives on a fixed
-   layer sized to the large viewport (toolbars collapsed) instead */
+   layer instead. inset: 0 tracks the visible area as the toolbars move, which
+   keeps the faded edges right against them. */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-  height: 100lvh;
   z-index: -1;
   pointer-events: none;
+  @apply fade-edges;
   @apply bg-linear-to-br from-amber-50/60 via-white to-sky-50/50;
 }
 

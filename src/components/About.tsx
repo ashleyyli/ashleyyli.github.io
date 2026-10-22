@@ -2,24 +2,35 @@ import Typewriter from "typewriter-effect";
 
 import { openProject } from "./Projects";
 
+const taglines = [
+  "I try to do things that seem interesting",
+  "not sure what to put here",
+  "Hello, world!",
+  "updog",
+];
+
 export default function About() {
   return (
     <div id="about" className="flex flex-col justify-center scroll-mt-6">
       <div className="pb-12">
         <h1 className="text-5xl font-medium mt-10 pb-6">Hi, I'm Ashley</h1>
-        <h4 className="text-2xl text-gray-500 pb-8">
-          <Typewriter
-            options={{
-              strings: [
-                "I try to do things that seem interesting",
-                "not sure what to put here",
-                "Hello, world!",
-                "updog",
-              ],
-              autoStart: true,
-              loop: true,
-            }}
-          />
+        {/* Every line sits invisibly in the same grid cell, so the heading is
+            always as tall as the longest one wraps to and nothing below jumps */}
+        <h4 className="grid text-2xl text-gray-500 pb-8">
+          {taglines.map((line) => (
+            <span key={line} aria-hidden="true" className="invisible [grid-area:1/1]">
+              {line}
+            </span>
+          ))}
+          <span className="[grid-area:1/1]">
+            <Typewriter
+              options={{
+                strings: taglines,
+                autoStart: true,
+                loop: true,
+              }}
+            />
+          </span>
         </h4>
       </div>
 
