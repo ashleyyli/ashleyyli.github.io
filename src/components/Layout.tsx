@@ -128,11 +128,15 @@ function Header() {
 
   return (
     <header className="text-sm w-full flex justify-center px-6 py-4">
-      <nav className="flex flex-row justify-between items-center w-full max-w-[600px]">
-        <Link className="text-2xl" to="/" title="Ashley Li">
+      <nav className="flex flex-row flex-wrap justify-between items-center gap-x-3 w-full max-w-[600px]">
+        <Link
+          className="text-xl sm:text-2xl whitespace-nowrap"
+          to="/"
+          title="Ashley Li"
+        >
           Ashley Li
         </Link>
-        <div className="flex justify-center items-center gap-6">
+        <div className="flex justify-center items-center gap-2 sm:gap-6">
           {sections.map(({ id, label }) => (
             <SectionLink key={id} id={id}>
               {label}
@@ -222,7 +226,7 @@ function DisplayToggle() {
   return (
     <button
       onClick={() => setDarkMode(!darkMode)}
-      className="p-2 rounded text-yellow-500 dark:text-gray-200"
+      className="p-1 sm:p-2 rounded text-yellow-500 dark:text-gray-200"
     >
       {darkMode ? (
         // Sun icon

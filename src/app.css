@@ -7,15 +7,29 @@
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
+/* Opaque so iOS fills the status bar, home indicator and overscroll with it */
 html {
-  @apply bg-amber-50/10 dark:bg-slate-900;
+  @apply bg-amber-50 dark:bg-slate-900;
 }
 
 body {
-  @apply bg-linear-to-br from-amber-50/60 via-white to-sky-50/50;
-  @apply dark:from-slate-900 dark:via-slate-900 dark:to-indigo-950/60;
-  @apply bg-fixed;
   @apply text-black dark:text-white;
   @apply font-extralight;
   @apply text-base;
+}
+
+/* iOS ignores background-attachment: fixed, so the gradient lives on a fixed
+   layer sized to the large viewport (toolbars collapsed) instead */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  height: 100lvh;
+  z-index: -1;
+  pointer-events: none;
+  @apply bg-linear-to-br from-amber-50/60 via-white to-sky-50/50;
+}
+
+.dark body::before {
+  @apply from-slate-900 via-slate-900 to-indigo-950/60;
 }

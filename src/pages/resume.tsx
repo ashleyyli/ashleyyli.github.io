@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import resumePdf from "../assets/AshleyLiResumePublic.pdf";
 
 const styles = {
@@ -15,12 +17,21 @@ const styles = {
   },
 };
 
+// Mobile browsers render iframed PDFs as a static image that can't be zoomed or
+// scrolled on its own, so hand touch devices the PDF and its native viewer.
+// replace() keeps back from bouncing into this page again.
+const isTouchDevice = () => window.matchMedia("(pointer: coarse)").matches;
+
 export default function Resume() {
+  useEffect(() => {
+    if (isTouchDevice()) window.location.replace(resumePdf);
+  }, []);
+
   return (
     <div style={styles.container}>
       <iframe
         src={resumePdf}
-        title="asdf"
+        title="Ashley Li's Resume"
         style={styles.iframe}
       />
     </div>
