@@ -1,19 +1,13 @@
-import type { LoaderFunctionArgs } from "react-router-dom";
-import { About } from "./about";
+import About from "../components/About";
 import Projects from "../components/Projects";
-
-export function meta({}: LoaderFunctionArgs) {
-  return [
-    { title: "Ashley Li" },
-    { name: "description", content: "A personal website" },
-  ];
-}
+import WebRing from "../components/WebRing";
 
 export default function Home() {
   return (
-    <div>
+    <div className="flex flex-col justify-center gap-y-16 py-12">
       <About />
       <Projects />
+      <WebRing />
     </div>
   );
 }
