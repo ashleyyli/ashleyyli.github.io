@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Ashley Li</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico?" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@200;400;500&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Theme script -->
+    <script>
+      (function () {
+        const theme = localStorage.getItem("theme");
+        const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (theme === "dark" || (!theme && systemDark)) {
+          document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="/assets/index-CdgiGrcf.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DXTlkEeY.css">
+  </head>
+
+  <body class="min-h-full">
+    <div id="root" class="h-full"></div>
+
+    <!-- Analytics: page views are counted manually in src/analytics.ts -->
+    <script
+      data-goatcounter="https://ashleyyli.goatcounter.com/count"
+      data-goatcounter-settings='{"no_onload": true}'
+      async src="//gc.zgo.at/count.js">
+    </script>
+  </body>
+</html>
